@@ -1,0 +1,1 @@
+const odoo = require('../startup/db');
