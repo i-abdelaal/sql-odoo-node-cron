@@ -8,4 +8,11 @@ const password = process.env.ODOO_PASSWORD || 'admin';
 
 const odoo = new Odoo({ baseUrl, port, db, username, password });
 
-module.exports = Object.freeze({ odoo });
+const sqlConfig = 
+`Server=${process.env.SQL_URL || 'http://localhost'},${process.env.SQL_PORT || 1433};
+Database=${process.env.SQL_DB || 'test'};
+User Id=${process.env.SQL_USERNAME || 'admin'};
+Password=${process.env.SQL_PASSWORD|| 'admin'};
+Encrypt=true`;
+
+module.exports = Object.freeze({ odoo, sqlConfig });
